@@ -9,6 +9,7 @@
     "python"
   ],
   "words": [
+    "Arango",
     "ARANGODB",
     "autouse",
     "axios",
@@ -22,15 +23,19 @@
     "pydantic",
     "pytest",
     "Redoc",
+    "Roboto",
     "socketio",
     "termcolor",
+    "tomansion",
+    "unplugin",
     "uvicorn",
     "Vetur",
     "Vuetify",
     "vuex",
     "websockets",
     "websrv",
-    "werkzeug"
+    "werkzeug",
+    "wght"
   ],
   "flagWords": [],
   "ignorePaths": [

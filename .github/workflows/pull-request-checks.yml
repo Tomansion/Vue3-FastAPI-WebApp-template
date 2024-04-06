@@ -1,0 +1,65 @@
+name: Pull Request Checks
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  black-format-check: # Check that the backend codebase is formatted with black
+    name: Black format check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+      - name: Install dependencies and check black format
+        run: |
+          cd backend
+          python -m pip install --upgrade pip
+          pip install black
+          black --check --diff .
+
+  flake8-check: # Check that the project is formatted with flake8
+    name: Flake8 check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+      - name: Install dependencies and check flake8 format
+        run: |
+          cd backend
+          python -m pip install --upgrade pip
+          pip install flake8
+          flake8 .
+
+  prettier-check: # Check that the frontend codebase is formatted with prettier
+    name: Prettier format check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node 18
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+      - name: Install dependencies and check prettier format
+        run: cd frontend && npm install && npm run prettier:check
+
+  cspell-check: # Check that the project does not contain spelling errors
+    name: CSpell check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node 18
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+      - name: Install dependencies and check prettier format
+        run: npm install -g cspell && cspell --no-summary --no-progress --no-color .
