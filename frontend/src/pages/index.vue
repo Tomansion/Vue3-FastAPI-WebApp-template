@@ -56,6 +56,9 @@
 <script>
 import axios from "axios";
 
+const noteCreationUpdateEventName = "noteCreationUpdate";
+const noteDeletionUpdateEventName = "noteDeletionUpdate";
+
 export default {
   name: "HomePage",
   data() {
@@ -68,7 +71,22 @@ export default {
     };
   },
   mounted() {
+    // Get the notes from the API
     this.getNotes();
+
+    // Listen for websocket updates
+    this.$websocket.onMessage(noteCreationUpdateEventName, (newNote) => {
+      // Check if the note already exists
+      const existingNote = this.notes.find((note) => note.id === newNote.id);
+      if (existingNote) return; // The note already exists
+
+      // Add the new note to the list
+      this.notes.unshift(newNote);
+    });
+    this.$websocket.onMessage(noteDeletionUpdateEventName, (noteId) => {
+      // Remove the note from the list
+      this.notes = this.notes.filter((note) => note.id !== noteId);
+    });
   },
   methods: {
     getNotes() {
@@ -94,6 +112,10 @@ export default {
       this.$router.push({ path: `/notes/${id}` });
     },
     noteAdded(newNote) {
+      // Check if the note already exists
+      const existingNote = this.notes.find((note) => note.id === newNote.id);
+      if (existingNote) return; // The note already exists
+
       // Add the new note to the start of the list
       this.notes.unshift(newNote);
     },
@@ -108,6 +130,11 @@ export default {
           console.error(error);
         });
     },
+  },
+  beforeUnmount() {
+    // Remove the all websocket listeners
+    this.$websocket.offMessage(noteCreationUpdateEventName);
+    this.$websocket.offMessage(noteDeletionUpdateEventName);
   },
 };
 </script>
