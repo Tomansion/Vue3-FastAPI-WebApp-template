@@ -64,8 +64,6 @@ export default {
   },
   computed: {
     messages() {
-      // console.log(this);
-      console.log(this.messagesStore.messages);
       return this.messagesStore.messages;
     },
 
