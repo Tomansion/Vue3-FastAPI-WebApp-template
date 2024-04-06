@@ -12,6 +12,7 @@
     "axios": "^1.6.7",
     "core-js": "^3.34.0",
     "roboto-fontface": "*",
+    "uuid": "^9.0.1",
     "vis-network": "^9.1.9",
     "vue": "^3.3.0",
     "vuetify": "^3.0.0"

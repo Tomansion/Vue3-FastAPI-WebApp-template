@@ -40,6 +40,7 @@
 
 <script>
 import axios from "axios";
+import messagesStore from "@/store/messages";
 
 export default {
   name: "NotePage",
@@ -66,16 +67,16 @@ export default {
     this.getNote();
 
     // Listen for websocket updates
-    this.$websocket.onMessage("noteCreationUpdate", (data) => {
-      const noteId = data.id;
-
-      // Check if the update is for this note
-      if (noteId !== this.noteId) {
-        console.log("Update for another note: " + noteId);
-        console.log(this.noteId);
-        return;
+    this.$websocket.onMessage("noteDeletionUpdate", (noteId) => {
+      // Check if the update is for this note and redirect to home if it is
+      if (noteId === this.id) {
+        // Warn the user
+        messagesStore.addMessage({
+          type: "info",
+          message: "The note has been deleted",
+        });
+        this.$router.push({ path: `/` });
       }
-      this.updateNote(data);
     });
   },
   methods: {
