@@ -1,0 +1,16 @@
+# Application configuration file
+
+[NOTES]
+NOTES_NUMBER_MAX = 10
+NOTES_TITLE_LENGTH_MAX = 50
+NOTES_CONTENT_LENGTH_MAX = 500
+
+[ARANGODB]
+HOST = ...
+PORT = ...
+DATABASE = ...
+USER = ...
+PASSWORD = ...
+
+; More info in the 'backend/config/README.md' file
+

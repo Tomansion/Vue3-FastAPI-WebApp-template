@@ -1,0 +1,5 @@
+[run]
+omit =
+    websrv.py
+    init.py
+    tests/*
