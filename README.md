@@ -51,7 +51,7 @@ This app template example is a simple web application that allows users to creat
 
 ### Development prerequisites
 
-- [Python](https://www.python.org/downloads/) v3.8+
+- [Python](https://www.python.org/downloads/) v3.9+
 - [Node.js](https://nodejs.org/en/download/) v19.0.0c
 - [npm](https://www.npmjs.com/get-npm) v8.19.2
 
@@ -135,36 +135,22 @@ make check
 # A pipeline is included in the GitHub Actions workflow that runs the linters, so make sure to fix any issues before pushing the code.
 ```
 
-### Running the application with Docker Compose
+### Running the application with [Docker Compose](https://docs.docker.com/compose/)
 
 ```bash
 # Clone the repository:
 git clone https://github.com/Tomansion/Vue3-FastAPI-WebApp-template.git
 cd Vue3-FastAPI-WebApp-template
+
+# Set the docker-compose environment variables
+# More information in the backend/config/config.env file
+nano docker-compose.yml
 
 # Build and run the application with Docker Compose:
 docker-compose up --build
 ```
 
-The application should be available at: [http://localhost:8080](http://localhost:8080)
-
-### Running the application with Docker
-
-```bash
-# Clone the repository:
-git clone https://github.com/Tomansion/Vue3-FastAPI-WebApp-template.git
-cd Vue3-FastAPI-WebApp-template
-
-# Build and run the application with Docker:
-docker build -t vue3-fastapi-webapp-template .
-
-# Run the Docker container:
-docker run -d -p 3000:3000 vue3-fastapi-webapp-template
-```
-
-The application should be available at: [http://localhost:8080](http://localhost:8080).
-
-More information about how to run a Docker image can be found in the [Docker documentation](https://docs.docker.com/get-started/).
+The application should be available at: [http://localhost:3000](http://localhost:3000)
 
 ### Recommended VSCode extensions
 

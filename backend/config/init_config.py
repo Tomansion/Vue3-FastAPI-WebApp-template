@@ -74,8 +74,8 @@ def get_config_value(section, key, config_parser):
         return os.environ[ENV_VAR]
 
     if value is None:
-        default = config_descriptions[section][key]["default"]
-        if default is not None:
+        # No value found in the config or in the environment variables
+        if "default" in config_descriptions[section][key]:
             print(
                 " - Missing "
                 + colored(section, DEBUG_SECONDARY_COLOR)
@@ -85,7 +85,7 @@ def get_config_value(section, key, config_parser):
                 + colored(ENV_VAR, DEBUG_SECONDARY_COLOR)
                 + " env var, using default value"
             )
-            return default
+            return config_descriptions[section][key]["default"]
 
         raise ValueError(
             "Missing "

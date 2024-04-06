@@ -1,6 +1,7 @@
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from controller.notes import router as party_router
 from utils.socket_utils import connection_manager
 from pathlib import Path
@@ -48,19 +49,20 @@ try:
 
     # Serve assets files from the build directory
     app.mount("/assets", StaticFiles(directory=build_dir / "assets"), name="assets")
+
+    # Catch-all route for SPA
+    @app.get("/{catchall:path}")
+    async def serve_spa(catchall: str):
+        # If the requested file exists, serve it, else serve index.html
+        path = build_dir / catchall
+        if path.is_file():
+            return FileResponse(path)
+        return FileResponse(index_path)
+
 except RuntimeError:
     # The build directory does not exist
     print("Vue app build directory not found. Running in development mode.")
     print(f"Access the frontend at {DEV_FRONTEND_URL}")
-
-# # Catch-all route for SPA
-# @app.get("/{catchall:path}")
-# async def serve_spa(catchall: str):
-#     # If the requested file exists, serve it, else serve index.html
-#     path = build_dir / catchall
-#     if path.is_file():
-#         return FileResponse(path)
-#     return FileResponse(index_path)
 
 
 # Initialize the app
