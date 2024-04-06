@@ -107,6 +107,24 @@ npm run serve
 - The API SwaggerUI documentation: [http://localhost:3000/docs](http://localhost:3000/docs)
 - The API Redoc documentation: [http://localhost:3000/redoc](http://localhost:3000/docs)
 
+### Running the tests
+
+More information about how to run the tests can be found in the [backend tests README](backend/tests/README.md).
+
+### Code quality
+
+This application provide a Makefile with some commands to help you with the code quality:
+
+```bash
+# Format the code with Black and Prettier:
+make format
+
+# Check the code with Black, Prettier, Flake8, and cSpell:
+make check
+
+# A pipeline is included in the GitHub Actions workflow that runs the linters, so make sure to fix any issues before pushing the code.
+```
+
 ### Running the application with Docker Compose
 
 ```bash
@@ -137,10 +155,6 @@ docker run -d -p 3000:3000 vue3-fastapi-webapp-template
 The application should be available at: [http://localhost:8080](http://localhost:8080).
 
 More information about how to run a Docker image can be found in the [Docker documentation](https://docs.docker.com/get-started/).
-
-### Running the tests
-
-More information about how to run the tests can be found in the [backend tests README](backend/tests/README.md).
 
 ### Recommended VSCode extensions
 
