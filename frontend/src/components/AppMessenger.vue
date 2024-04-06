@@ -6,21 +6,21 @@
         'margin-bottom': calcMargin(i),
       }"
       class="cursor-pointer"
-      v-for="(s, i) in messages.slice(0, 10)"
+      v-for="(message, i) in messages.slice(0, 10)"
       :key="i"
       v-model="show"
       timeout="-1"
-      :color="s.type"
-      @click="closeMessage(s.id)"
+      :color="message.type"
+      @click="closeMessage(message.id)"
       :offset="100"
     >
       <!-- Message content -->
       <div style="display: flex; align-items: center; gap: 10px">
         <!-- Message Icons -->
-        <v-icon v-if="s.type === 'info'">mdi-information</v-icon>
-        <v-icon v-if="s.type === 'success'">mdi-check</v-icon>
-        <v-icon v-if="s.type === 'warning'">mdi-alert</v-icon>
-        <v-icon v-if="s.type === 'error'">mdi-alert-circle</v-icon>
+        <v-icon v-if="message.type === 'info'">mdi-information</v-icon>
+        <v-icon v-if="message.type === 'success'">mdi-check</v-icon>
+        <v-icon v-if="message.type === 'warning'">mdi-alert</v-icon>
+        <v-icon v-if="message.type === 'error'">mdi-alert-circle</v-icon>
 
         <!-- Message Text -->
         <div
@@ -31,7 +31,7 @@
             text-overflow: ellipsis;
           "
         >
-          {{ s.text }}
+          {{ message.message }}
         </div>
       </div>
 

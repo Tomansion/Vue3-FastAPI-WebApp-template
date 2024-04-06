@@ -8,12 +8,12 @@ const store = defineStore("messages", {
     };
   },
   actions: {
-    addMessage({ type, text }) {
+    addMessage({ type, message }) {
       // Generate a new message id and add it to the messages array
       const newMessageId = v4();
       this.messages.push({
         id: newMessageId,
-        text,
+        message,
         type,
       });
 

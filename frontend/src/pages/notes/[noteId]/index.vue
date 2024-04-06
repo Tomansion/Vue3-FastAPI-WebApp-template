@@ -41,6 +41,9 @@
 <script>
 import axios from "axios";
 import messagesStore from "@/store/messages";
+import { mapStores } from "pinia";
+
+const websocketDeletionUpdateEvent = "noteDeletionUpdate";
 
 export default {
   name: "NotePage",
@@ -67,11 +70,11 @@ export default {
     this.getNote();
 
     // Listen for websocket updates
-    this.$websocket.onMessage("noteDeletionUpdate", (noteId) => {
+    this.$websocket.onMessage(websocketDeletionUpdateEvent, (noteId) => {
       // Check if the update is for this note and redirect to home if it is
       if (noteId === this.id) {
         // Warn the user
-        messagesStore.addMessage({
+        this.messagesStore.addMessage({
           type: "info",
           message: "The note has been deleted",
         });
@@ -134,8 +137,11 @@ export default {
         });
     },
   },
+  computed: {
+    ...mapStores(messagesStore),
+  },
   beforeUnmount() {
-    this.$websocket.offMessage("noteCreationUpdate");
+    this.$websocket.offMessage(websocketDeletionUpdateEvent);
   },
 };
 </script>
