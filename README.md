@@ -69,38 +69,37 @@ git clone https://github.com/Tomansion/Vue3-FastAPI-WebApp-template.git
 cd Vue3-FastAPI-WebApp-template
 ```
 
-2. Install the backend dependencies:
+2. Install the backend and frontend dependencies:
 
 ```bash
-# In a new terminal:
+make install
+
+# Or manually:
 cd backend
 pip install -r requirements.txt
+cd ../frontend
+npm install
 ```
 
 3. Modify the configuration:
 
 Follow the instructions in the [`backend/config/README.md`](backend/config/README.md) file to configure the application.
 
-4. Run the backend:
+4. Run the backend and frontend:
 
 ```bash
-uvicorn main:app --reload
-```
+make run
 
-5. Install the frontend dependencies:
+# Or manually:
+cd backend
+uvicorn websrv:app --reload --host 0.0.0.0 --port 3000
 
-```bash
+# In another terminal:
 cd frontend
-npm install
-```
-
-6. Run the frontend:
-
-```bash
 npm run serve
 ```
 
-7. Open the different services in your browser:
+5. Open the different services in your browser:
 
 - The application frontend: [http://localhost:8080](http://localhost:8080)
 - The FastAPI backend: [http://localhost:3000](http://localhost:3000)
@@ -113,7 +112,7 @@ More information about how to run the tests can be found in the [backend tests R
 
 ### Code quality
 
-This application provide a Makefile with some commands to help you with the code quality:
+This application provide a [Makefile](./makefile) with some commands to help you with the code quality:
 
 ```bash
 # Format the code with Black and Prettier:

@@ -6,14 +6,14 @@ install:
 	cd frontend && npm install
 
 # Run the application in development mode
-start_backend:
+run_backend:
 	cd backend && uvicorn websrv:app --reload --host 0.0.0.0 --port 3000
 
-start_frontend:
+run_frontend:
 	cd frontend && npm run serve
 
-start:
-	make start_backend & make start_frontend
+run:
+	make run_backend & make run_frontend
 
 # Code quality
 format:
