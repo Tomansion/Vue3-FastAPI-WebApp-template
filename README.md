@@ -108,7 +108,18 @@ npm run serve
 
 ### Running the tests
 
-More information about how to run the tests can be found in the [backend tests README](backend/tests/README.md).
+```bash
+# Install the test dependencies:
+make install_test
+
+# Run the tests:
+make test
+
+# Or manually:
+cd backend
+pytest --cov-report term --cov=. --cov-report=html -sx
+firefox htmlcov/index.html
+```
 
 ### Code quality
 

@@ -15,6 +15,13 @@ run_frontend:
 run:
 	make run_backend & make run_frontend
 
+# Testing
+install_test:
+	pip install coverage pytest pytest-cov
+
+test:
+	cd backend && pytest --cov-report term --cov=. --cov-report=html -sx
+
 # Code quality
 format:
 	# -----  Formatting Python code with Black
