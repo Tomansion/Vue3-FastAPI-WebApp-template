@@ -1,13 +1,10 @@
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
-from fastapi.responses import FileResponse, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.exceptions import HTTPException
 from controller.notes import router as party_router
 from utils.socket_utils import connection_manager
 from pathlib import Path
 from init import init
-import requests
 
 DEV_FRONTEND_URL = "http://localhost:8080/"
 PORT = 3000

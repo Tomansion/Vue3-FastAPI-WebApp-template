@@ -9,3 +9,4 @@ Closes #
 - [ ] I have performed a self-review of my code
 - [ ] I have commented my code, particularly in hard-to-understand areas
 - [ ] I have written unit tests for my code if applicable
+- [ ] I have formatted my code according to the style guide (use `make format` & `make check`)

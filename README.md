@@ -16,8 +16,11 @@ This app template example is a simple web application that allows users to creat
 
   - [**FastAPI**](https://fastapi.tiangolo.com/): A modern, fast (high-performance), web framework for building APIs with Python 3.6+ based on standard Python type hints.
   - [**Vue3**](https://vuejs.org/): A progressive JavaScript framework for building user interfaces.
-  - [**Vuetify**](https://vuetifyjs.com/): A Material Design component framework for Vue.js.
-  - [**Web sockets**](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API): The backend includes an example of a WebSocket endpoint that the frontend connects to.
+    - Router: [**Vue Router**](https://router.vuejs.org/): The official router for Vue.js.
+    - State management: [**Pinia**](https://pinia.esm.dev/): A Vue Store that is designed to be used in a modular way.
+    - HTTP client: [**Axios**](https://axios-http.com/): Promise based HTTP client for the browser and Node.js.
+    - [**Vuetify**](https://vuetifyjs.com/): A Material Design component framework for Vue.js.
+    - [**Web sockets**](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API): The backend includes an example of a WebSocket endpoint that the frontend connects to.
   - [**ArangoDB**](https://www.arangodb.com/): A multi-model database system that supports document, key/value, and graph data models.
 
 - Containerization:
@@ -42,18 +45,22 @@ This app template example is a simple web application that allows users to creat
 
 ## Getting started
 
+### Database prerequisites
+
+- This project uses [ArangoDB](https://www.arangodb.com/) as the database system. You can [install it locally](https://arangodb.com/download-major/docker/) or [use a cloud service](https://cloud.arangodb.com/).
+
 ### Development prerequisites
 
-- [Python 3.6+](https://www.python.org/downloads/)
-- [Node.js](https://nodejs.org/en/download/)
-- [npm](https://www.npmjs.com/get-npm)
+- [Python](https://www.python.org/downloads/) v3.8+
+- [Node.js](https://nodejs.org/en/download/) v19.0.0c
+- [npm](https://www.npmjs.com/get-npm) v8.19.2
 
 ### Production prerequisites
 
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
-### Running the application
+### Running the application in development mode
 
 1. Clone the repository:
 
@@ -62,20 +69,7 @@ git clone https://github.com/Tomansion/Vue3-FastAPI-WebApp-template.git
 cd Vue3-FastAPI-WebApp-template
 ```
 
-2. Install the frontend dependencies:
-
-```bash
-cd frontend
-npm install
-```
-
-3. Run the frontend:
-
-```bash
-npm run serve
-```
-
-4. Install the backend dependencies:
+2. Install the backend dependencies:
 
 ```bash
 # In a new terminal:
@@ -83,17 +77,30 @@ cd backend
 pip install -r requirements.txt
 ```
 
-5. Modify the configuration:
+3. Modify the configuration:
 
 Follow the instructions in the [`backend/config/README.md`](backend/config/README.md) file to configure the application.
 
-6. Run the backend:
+4. Run the backend:
 
 ```bash
 uvicorn main:app --reload
 ```
 
-6. Open the different services in your browser:
+5. Install the frontend dependencies:
+
+```bash
+cd frontend
+npm install
+```
+
+6. Run the frontend:
+
+```bash
+npm run serve
+```
+
+7. Open the different services in your browser:
 
 - The application frontend: [http://localhost:8080](http://localhost:8080)
 - The FastAPI backend: [http://localhost:3000](http://localhost:3000)
@@ -152,5 +159,6 @@ More information about how to run the tests can be found in the [backend tests R
 - [ ] Add authentication
 - [ ] Add CI/CD pipeline
 - [ ] Add frontend tests
-- [x] Add frontend store
-- [x] Add database
+- [x] Pinia store
+- [x] Arango Database
+- [x] Backend tests and coverage
