@@ -1,16 +1,14 @@
 # Vue3 & FastAPI WebApp template
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-![Activity](https://img.shields.io/github/commit-activity/m/debiai/debiai)
-![Last commit](https://img.shields.io/github/last-commit/debiai/debiai)
-</br>
+
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Code style: flake8](https://img.shields.io/badge/code%20style-flake8-1c4a6c.svg)](https://flake8.pycqa.org/en/latest/)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 This is a template for a fullstack web application using [Vue3](https://vuejs.org/) and [FastAPI](https://fastapi.tiangolo.com/). It includes a basic example of a web application with a simple API and a frontend that consumes it.
 
-This app template example is a simple web application that allows users to create notes. New notes are broadcasted to all connected clients using web sockets.
+This app template example is a simple web application that allows users to create notes. New notes and deleted notes are broadcasted to all connected clients using web sockets.
 
 ## Features
 
@@ -20,6 +18,7 @@ This app template example is a simple web application that allows users to creat
   - [**Vue3**](https://vuejs.org/): A progressive JavaScript framework for building user interfaces.
   - [**Vuetify**](https://vuetifyjs.com/): A Material Design component framework for Vue.js.
   - [**Web sockets**](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API): The backend includes an example of a WebSocket endpoint that the frontend connects to.
+  - [**ArangoDB**](https://www.arangodb.com/): A multi-model database system that supports document, key/value, and graph data models.
 
 - Containerization:
 
@@ -144,3 +143,14 @@ More information about how to run the tests can be found in the [backend tests R
 - [Black](https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter)
 - [flake8](https://marketplace.visualstudio.com/items?itemName=ms-python.flake8)
 - [cSpell](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+
+## TODO
+
+- [ ] Add i18n
+- [ ] Add demo link
+- [ ] Add custom styles
+- [ ] Add authentication
+- [ ] Add CI/CD pipeline
+- [ ] Add frontend tests
+- [x] Add frontend store
+- [x] Add database
