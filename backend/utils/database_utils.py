@@ -102,7 +102,6 @@ def get_notes() -> List[dict]:
 
 @db_must_be_setup
 def get_note(note_id) -> Optional[dict]:
-    print(f" - Getting note {colored(note_id, DEBUG_COLOR)}")
     note = db.collection(NOTES_COLLECTION_NAME).get(note_id)
     if note is not None:
         note["id"] = note["_key"]

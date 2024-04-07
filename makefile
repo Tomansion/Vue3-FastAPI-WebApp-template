@@ -15,6 +15,9 @@ run_frontend:
 run:
 	make run_backend & make run_frontend
 
+start:
+	make runk
+
 # Testing
 install_test:
 	pip install coverage pytest pytest-cov

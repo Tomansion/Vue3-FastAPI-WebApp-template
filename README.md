@@ -152,6 +152,46 @@ docker-compose up --build
 
 The application should be available at: [http://localhost:3000](http://localhost:3000)
 
+### Setting up the GitHub continuous deployment pipeline
+
+This project includes a GitHub Actions workflow that builds the Docker image, pushes it to the Docker Hub image registry, and deploys the application by calling an SSH script.
+
+#### Prerequisites
+
+- A Linux server with Docker and Docker Compose installed.
+- A [Docker Hub](https://hub.docker.com/) account.
+
+#### Steps
+
+1. Create a new repository from this template and push it to GitHub.
+2. Copy and edit the [`docker-compose.yml`](docker-compose.yml) file to your server.
+   - Edit the images to point to your Docker Hub repository.
+   - Edit the environment variables to match your configuration.
+   - Edit the container names and the other configurations as needed.
+   - Add your Nginx or Traefik configuration if needed.
+3. Create, on your server a `deploy.sh` script with the following content:
+
+```bash
+# deploy.sh
+cd /path/to/your/application
+docker-compose pull
+docker-compose up -d
+# Use chmod +x deploy.sh to make the script executable
+```
+
+4. Add the following secrets to your repository:
+   - `DOCKER_USERNAME`: Your Docker Hub username.
+   - `DOCKER_PASSWORD`: Your Docker Hub password.
+   - `SSH_HOST`: The IP address of the server where you want to deploy the application.
+   - `SSH_PORT`: The port to connect to the server.
+   - `SSH_USERNAME`: The username to connect to the server.
+   - `SSH_PASSWORD`: The user password to connect to the server.
+   - `SSH_SCRIPT_PATH`: The absolute path to the `deploy.sh` script on the server.
+5. Modify the `APP_NAME`in the [continuous-deployment.yml](./.github/workflows/continuous-deployment.yml) file to match your application name.
+6. Push the changes to your repository.
+
+The GitHub Actions workflow will run when you push the changes to the repository `main` branch. It will build the Docker image, push it to the Docker Hub image registry, and deploy the application by calling the `deploy.sh` script on your server.
+
 ### Recommended VSCode extensions
 
 - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
@@ -161,14 +201,23 @@ The application should be available at: [http://localhost:3000](http://localhost
 - [flake8](https://marketplace.visualstudio.com/items?itemName=ms-python.flake8)
 - [cSpell](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
 
+## Help
+
+If you have any questions or need help, feel free to [open an issue](https://github.com/Tomansion/Vue3-FastAPI-WebApp-template/issues).
+
+## Contributing
+
+I'm open to contributions and suggestions. Feel free to [open an issue](https://github.com/Tomansion/Vue3-FastAPI-WebApp-template/issues) or a make a pull request.
+
 ## TODO
 
-- [ ] Add i18n
-- [ ] Add demo link
-- [ ] Add custom styles
-- [ ] Add authentication
-- [ ] Add CI/CD pipeline
-- [ ] Add frontend tests
+- [ ] CI/CD pipeline
+- [ ] Demo link
+- [ ] Custom styles
+- [ ] I18n
+- [ ] Authentication
+- [ ] Frontend tests
+- [ ] Frontend to mobile app
 - [x] Pinia store
 - [x] Arango Database
 - [x] Backend tests and coverage

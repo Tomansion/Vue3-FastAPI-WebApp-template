@@ -27,6 +27,7 @@
     "socketio",
     "termcolor",
     "tomansion",
+    "Traefik",
     "unplugin",
     "uvicorn",
     "Vetur",
