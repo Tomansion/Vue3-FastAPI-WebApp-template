@@ -7,7 +7,6 @@ from utils.socket_utils import connection_manager
 from pathlib import Path
 from init import init
 
-DEV_FRONTEND_URL = "http://localhost:8080/"
 PORT = 3000
 
 # Initialize the FastAPI app
@@ -61,8 +60,7 @@ try:
 
 except RuntimeError:
     # The build directory does not exist
-    print("Vue app build directory not found. Running in development mode.")
-    print(f"Access the frontend at {DEV_FRONTEND_URL}")
+    print("No build directory found. Running in development mode.")
 
 
 # Initialize the app

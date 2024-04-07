@@ -56,22 +56,13 @@ This project is a template for a fullstack web application using [Vue3](https://
 
 ## Getting started
 
-### Database prerequisites
-
-- This project uses [ArangoDB](https://www.arangodb.com/) as the database system. You can [install it locally](https://arangodb.com/download-major/docker/) or [use a cloud service](https://cloud.arangodb.com/).
-
-### Development prerequisites
-
-- [Python](https://www.python.org/downloads/) v3.9+
-- [Node.js](https://nodejs.org/en/download/) v19.0.0c
-- [npm](https://www.npmjs.com/get-npm) v8.19.2
-
-### Production prerequisites
-
-- [Docker](https://docs.docker.com/get-docker/)
-- [Docker Compose](https://docs.docker.com/compose/install/)
-
 ### Running the application in development mode
+
+#### Prerequisites
+
+- [Python](https://www.python.org/downloads/) v3.9+ for the backend.
+- [Node.js](https://nodejs.org/en/download/) v19.0.0c and [npm](https://www.npmjs.com/get-npm) v8.19.2 for the frontend.
+- A running [ArangoDB](https://www.arangodb.com/) instance. [Install it locally](https://arangodb.com/download-major/docker/) or [use a cloud service](https://cloud.arangodb.com/).
 
 1. Clone the repository:
 
@@ -94,7 +85,8 @@ npm install
 
 3. Modify the configuration:
 
-Follow the instructions in the [`backend/config/README.md`](backend/config/README.md) file to configure the application.
+Follow the instructions in the [`backend/config/README.md`](backend/config/README.md).
+Modifying the configuration is required to give the application access to the ArangoDB instance.
 
 4. Run the backend and frontend:
 
@@ -104,10 +96,41 @@ make run
 # Or manually:
 cd backend
 uvicorn websrv:app --reload --host 0.0.0.0 --port 3000
-
-# In another terminal:
-cd frontend
+cd frontend # In another terminal
 npm run serve
+```
+
+```bash
+# Backend expected output
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [125657] using WatchFiles
+No build directory found. Running in development mode.
+
+Initializing configuration...
+ - Set NOTES / NOTES_NUMBER_MAX
+ - Set NOTES / NOTES_TITLE_LENGTH_MAX
+ - Set NOTES / NOTES_CONTENT_LENGTH_MAX
+ - Set ARANGODB / HOST
+ - Set ARANGODB / PORT
+ - Set ARANGODB / DATABASE
+ - Set ARANGODB / USER
+ - Set ARANGODB / PASSWORD
+
+Connecting to ArangoDB...
+ - Host: ***
+ - Port: ***
+ - Database: WebAppTemplate
+ - User: WebAppTemplate
+ - Connection to Arango Arango 3.11.5 established
+
+Running FastAPI app...
+ - FastAPI is available at http://localhost:3000/api
+ - Swagger UI is available at http://localhost:3000/docs
+ - Redoc is available at http://localhost:3000/redoc
+
+INFO:     Started server process [125659]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
 ```
 
 5. Open the different services in your browser:
@@ -130,6 +153,20 @@ make test
 cd backend
 pytest --cov-report term --cov=. --cov-report=html -sx
 firefox htmlcov/index.html
+```
+
+```bash
+# Expected output
+Name                         Stmts   Miss  Cover
+------------------------------------------------
+config/init_config.py           51     14    73%
+services/notes_services.py      36      0   100%
+utils/database_utils.py         76      6    92%
+------------------------------------------------
+TOTAL                          163     20    88%
+
+============= 10 passed in 1.52s ===============
+# The detailed coverage report wil be available in the `htmlcov` directory.
 ```
 
 ### Code quality
@@ -224,6 +261,7 @@ I'm open to contributions and suggestions. Feel free to [open an issue](https://
 
 - [ ] Custom styles
 - [ ] I18n
+- [ ] Documentation
 - [ ] Authentication
 - [ ] Frontend tests
 - [ ] Frontend to mobile app
