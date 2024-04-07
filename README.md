@@ -6,21 +6,32 @@
 [![Code style: flake8](https://img.shields.io/badge/code%20style-flake8-1c4a6c.svg)](https://flake8.pycqa.org/en/latest/)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-This is a template for a fullstack web application using [Vue3](https://vuejs.org/) and [FastAPI](https://fastapi.tiangolo.com/). It includes a basic example of a web application with a simple API and a frontend that consumes it.
+![ci](https://github.com/tomansion/Vue3-FastAPI-WebApp-template/actions/workflows/pull-request-checks.yml/badge.svg)
+![cd](https://github.com/tomansion/Vue3-FastAPI-WebApp-template/actions/workflows/continuous-deployment.yml/badge.svg)
 
-This app template example is a simple web application that allows users to create notes. New notes and deleted notes are broadcasted to all connected clients using web sockets.
+---
 
-## Features
+This project is a template for a fullstack web application using [Vue3](https://vuejs.org/) and [FastAPI](https://fastapi.tiangolo.com/). It includes a basic example of a web application with a simple API and a frontend that consumes it, a simple web application that allows users to create notes. New notes and deleted notes are broadcasted to all connected clients using web sockets.
+
+![](Easy%20notes.png)
+
+<div align="center">
+  <b>
+  <a href="https://easynotes.tomansion.fr/">Live demo</br>https://easynotes.tomansion.fr/</a>
+  </b>
+</div>
+
+## Template features
 
 - Modern Frameworks and Tools:
 
   - [**FastAPI**](https://fastapi.tiangolo.com/): A modern, fast (high-performance), web framework for building APIs with Python 3.6+ based on standard Python type hints.
+    - [**Web sockets**](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API): The backend includes an example of a WebSocket endpoint that the frontend connects to.q
   - [**Vue3**](https://vuejs.org/): A progressive JavaScript framework for building user interfaces.
     - Router: [**Vue Router**](https://router.vuejs.org/): The official router for Vue.js.
     - State management: [**Pinia**](https://pinia.esm.dev/): A Vue Store that is designed to be used in a modular way.
     - HTTP client: [**Axios**](https://axios-http.com/): Promise based HTTP client for the browser and Node.js.
     - [**Vuetify**](https://vuetifyjs.com/): A Material Design component framework for Vue.js.
-    - [**Web sockets**](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API): The backend includes an example of a WebSocket endpoint that the frontend connects to.
   - [**ArangoDB**](https://www.arangodb.com/): A multi-model database system that supports document, key/value, and graph data models.
 
 - Containerization:
@@ -211,13 +222,13 @@ I'm open to contributions and suggestions. Feel free to [open an issue](https://
 
 ## TODO
 
-- [ ] CI/CD pipeline
-- [ ] Demo link
 - [ ] Custom styles
 - [ ] I18n
 - [ ] Authentication
 - [ ] Frontend tests
 - [ ] Frontend to mobile app
+- [x] CI/CD pipeline
+- [x] Demo link
 - [x] Pinia store
 - [x] Arango Database
 - [x] Backend tests and coverage
