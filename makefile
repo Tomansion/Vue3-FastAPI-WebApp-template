@@ -16,7 +16,7 @@ run:
 	make run_backend & make run_frontend
 
 start:
-	make runk
+	make run
 
 # Testing
 install_test:
