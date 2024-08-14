@@ -259,6 +259,7 @@ I'm open to contributions and suggestions. Feel free to [open an issue](https://
 
 ## TODO
 
+- [ ] Generate `config.ini.example` and `config.env` files automatically 
 - [ ] Custom styles
 - [ ] I18n
 - [ ] Documentation
